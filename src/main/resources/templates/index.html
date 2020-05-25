@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Ejercicio Practico</title>
+<style>
+span {
+	color: red;
+}
+</style>
+</head>
+<body>
+
+	<h2>Ingresar Contribuyente</h2>
+	<form th:action="@{/guardar}" th:object="${contribuyente}" method="POST">
+		<label for="nombre">Nombre:</label> <input class="form-control"
+			type="text" th:field="*{nombre}" /> <span th:errors="*{nombre}"></span><br />
+
+		<label for="apellido">Apellido:</label> <input class="form-control"
+			type="text" th:field="*{apellido}" /> <span th:errors="*{apellido}"></span><br />
+
+		<label for="nit">nit:</label> <input class="form-control"
+			type="text" th:field="*{nit}" /> <span th:errors="*{nit}"></span><br />
+			
+		<label><strong>Importancia:</strong></label>
+		<select th:field="*{cImportancia}">
+			<option th:each="imp : ${importancias}" th:text="${imp.tipoImportancia}" th:value="${imp.cImportancia}"></option>
+		</select><br>
+
+		<button class="btn btn-primary btn-block" type="submit">
+			Guardar</button>
+	</form>
+
+	<a href="/contribuyentes">Ver Contribuyentes</a>
+</body>
+</html>
