@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Ver Libros</title>
+</head>
+<body>
+
+	<table>
+		<thead>
+			<tr>
+				<th>Titulo</th>
+				<th>Autor</th>
+				<th>ISBN</th>
+				<th>Categoria</th>
+				<th>Fecha Ingreso</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="libro : ${libros}">
+				<td th:text="${libro.titulo}"></td>
+				<td th:text="${libro.autor}"></td>
+				<td th:text="${libro.isbn}"></td>
+				<td th:text="${libro.categoria.nombre}"></td>
+				<td th:text="${libro.getFechaDelegate()}"></td>
+			</tr>
+		</tbody>
+	</table>
+	<a href="/index">Regresar</a>
+</body>
+</html>
